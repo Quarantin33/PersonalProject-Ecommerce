@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 
-.container {
+.container-product {
     height: 100vh;
     min-height: 100%;
     background: #ced4da ;
@@ -10,7 +10,8 @@
 }
 
 .image-product {
-    height: 500px;
+    max-height: 500px;
+    height: 300px;
     justify-content: center;
 }
 
@@ -22,16 +23,9 @@
     box-sizing: border-box;
     margin-right: 180px;
 }
-
 .description-item {
     font-family: 'Roboto Condensed', sans-serif;
     width: 30%;
-    align-self: center;
-}
-
-div {
-    text-align: justify;
-    display: inline-block;
     align-self: center;
 }
 

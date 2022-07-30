@@ -3,7 +3,7 @@ import "./ProductContainer.css"
 
 const ProductContainer = ({ id, image, title, price, description, category }) => {
   return (
-    <div className='container'>
+    <div className='container-product'>
         <div className='image-item'>
             <img className='image-product' src={image} alt={title}/>
         </div>
