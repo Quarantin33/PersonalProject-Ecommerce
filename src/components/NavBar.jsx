@@ -13,6 +13,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../store/slices/token/tokenSlice";
 
 const pages = [
   <Link to="/">LogIn</Link>,
@@ -23,6 +25,7 @@ const settings = ["Profile", "Cart", "Logout"];
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -44,7 +47,7 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     //quitar permisos de login
-
+    dispatch( logout() );
     navigate('/');
   };
 

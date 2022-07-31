@@ -1,5 +1,5 @@
 import React from "react";
-import  { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,7 +14,9 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axiosService from "../services/axiosService";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import { useDispatch } from "react-redux";
+import { login } from "../store/slices/token/tokenSlice";
 
 function Copyright(props) {
   return (
@@ -38,25 +40,27 @@ const theme = createTheme();
 
 export default function SignInSide() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
     // dongmail.com pass: ewedon
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-      const email =  data.get("email");
-      const password = data.get("password");
+    const email = data.get("email");
+    const password = data.get("password");
 
     const response = await axiosService.getUser();
     console.log(response);
 
     if (email === response.email && password === response.password) {
+      dispatch( login() );
       navigate("/products");
     } else {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Email or password incorrect!'
-      })
+        icon: "error",
+        title: "Oops...",
+        text: "Email or password incorrect!",
+      });
     }
   };
 

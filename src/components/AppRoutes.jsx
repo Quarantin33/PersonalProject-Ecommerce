@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import AboutUs from "../pages/AboutUs";
+import AccessDenied from "../pages/AccessDenied";
 import LogIn from "../pages/LogIn";
 import LogPrueba from "../pages/LogPrueba";
 import ProductDetails from "../pages/ProductDetails";
@@ -17,6 +18,7 @@ const AppRoutes = () => {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:productId" element={<ProductDetails />} />
         <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/access-denied" element={<AccessDenied />} />
       </Routes>
     </>
   );
