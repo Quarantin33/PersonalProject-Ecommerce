@@ -5,6 +5,7 @@ import CardProduct from "./CardProduct";
 import axiosService from "../services/axiosService";
 
 const GridProduct = ({ products, setProducts }) => {
+
   useEffect(() => {
     (async () => {
       const response = await axiosService.getAllProducts();
@@ -23,7 +24,7 @@ const GridProduct = ({ products, setProducts }) => {
         sx={{ padding: 2 }}
       >
         {products.map((prod, index) => (
-          <Grid key={index} item xs={3}>
+          <Grid key={index} item xs={4}>
             <CardProduct
               id={prod.id}
               image={prod.image}

@@ -19,6 +19,14 @@ class AxiosService {
 
         return response.data;
     }
+
+    async getSingleProduct(idProduct) {
+        const url = `${baseUrl}/products/${idProduct}`;
+
+        const response = await axios.get(url);
+
+        return response.data;
+    }
 }
 
 const axiosService = new AxiosService();
