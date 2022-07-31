@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CardProduct from "../components/CardProduct";
 import ProductContainer from "../components/ProductContainer";
 import axiosService from "../services/axiosService";
 
@@ -20,8 +19,6 @@ const ProductDetails = () => {
   }, [productId]);
 
   return (
-    //     <CardProduct
-    //     />
     <ProductContainer
       id={product.id}
       image={product.image}
