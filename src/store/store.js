@@ -3,6 +3,6 @@ import { tokenSlice } from "./slices/token/tokenSlice";
 
 export const store = configureStore({
     reducer: {
-        tokenBox: tokenSlice.reducer
+        tokenBox: tokenSlice.reducer,
     }
 });

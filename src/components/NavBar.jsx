@@ -15,11 +15,26 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../store/slices/token/tokenSlice";
+import { red } from "@mui/material/colors";
+import logoNav from "../static/img/logoNav.png";
+
+const style = {
+  fontSize: "1.2rem",
+  color: "white",
+  textDecoration: "none",
+  fontFamily: "'Roboto Condensed','san-serif'",
+};
 
 const pages = [
-  <Link to="/">LogIn</Link>,
-  <Link to="/products">Products</Link>,
-  <Link to="/about-us">About us</Link>,
+  <Link style={style} to="/">
+    LogIn
+  </Link>,
+  <Link style={style} to="/products">
+    Products
+  </Link>,
+  <Link style={style} to="/about-us">
+    About us
+  </Link>,
 ];
 const settings = ["Profile", "Cart", "Logout"];
 
@@ -47,31 +62,41 @@ const NavBar = () => {
 
   const handleLogOut = () => {
     //quitar permisos de login
-    dispatch( logout() );
-    navigate('/');
+    dispatch(logout());
+    navigate("/");
   };
 
   return (
-    <AppBar position="sticky">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+    <AppBar position="fixed">
+      <Container maxWidth="x1">
+        <Toolbar
+          disableGutters
+          sx={{
+            margin: '-7px',
+            display: "flex",
+            justifyContent: "space-around",
+            alignContent: "center",
+            height: "50px",
+          }}
+        >
+          <img src={logoNav} alt="logoNav" />
           <Typography
             variant="h6"
             noWrap
             component="a"
             href="/"
             sx={{
+              fontSize: ".8rem",
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
+              fontFamily: "Roboto Condensed",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
             }}
           >
-            LOGO
+            J&J
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -111,25 +136,13 @@ const NavBar = () => {
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
+          <Box
             sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
+              justifyContent: "center",
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
+              display: { xs: "none", md: "flex" },
             }}
           >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page, index) => (
               <Button
                 key={index}

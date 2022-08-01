@@ -6,6 +6,7 @@ import LogIn from "../pages/LogIn";
 import ProductDetails from "../pages/ProductDetails";
 import Products from "../pages/Products";
 import NavBar from "./NavBar";
+import { height } from "@mui/system";
 
 const AppRoutes = () => {
   return (
