@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import CardProduct from "./CardProduct";
 import axiosService from "../services/axiosService";
+// import PaginationProduct from "./PaginationProduct";
 
 const GridProduct = ({ products, setProducts }) => {
 
@@ -16,7 +17,7 @@ const GridProduct = ({ products, setProducts }) => {
   }, [setProducts]);
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%" , marginTop: '40px'}}>
       <Grid
         container
         rowSpacing={1}
@@ -34,6 +35,7 @@ const GridProduct = ({ products, setProducts }) => {
           </Grid>
         ))}
       </Grid>
+      {/* <PaginationProduct /> */}
     </Box>
   );
 };
