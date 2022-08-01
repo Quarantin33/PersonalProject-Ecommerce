@@ -4,6 +4,7 @@ const initialState = {
     token: false
 }
 
+// este es el reducer que se encarga de la lógica que se ejecuta al hacer el dispatch
 export const tokenSlice = createSlice({
     name: 'token',
     initialState,

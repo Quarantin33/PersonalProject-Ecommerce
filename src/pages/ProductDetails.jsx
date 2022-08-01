@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import AccessDenied from "../components/AccessDenied";
 import ProductContainer from "../components/ProductContainer";
 import axiosService from "../services/axiosService";
 
 const ProductDetails = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState("");
+  const tokenSelector = useSelector((state) => state.tokenBox);
 
   useEffect(() => {
     (async () => {
@@ -19,14 +22,20 @@ const ProductDetails = () => {
   }, [productId]);
 
   return (
-    <ProductContainer
-      id={product.id}
-      image={product.image}
-      title={product.title}
-      price={product.price}
-      description={product.description}
-      category={product.category}
-    />
+    <>
+      {tokenSelector.token ? (
+        <ProductContainer
+          id={product.id}
+          image={product.image}
+          title={product.title}
+          price={product.price}
+          description={product.description}
+          category={product.category}
+        />
+      ) : (
+        <AccessDenied />
+      )}
+    </>
   );
 };
 
