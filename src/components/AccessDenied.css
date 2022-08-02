@@ -9,8 +9,9 @@
   }
   
   #notfound {
+    margin-top: 50px;
     position: relative;
-    height: 89vh;
+    height: 92vh;
     background-color: #ced4da;
   }
   

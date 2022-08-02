@@ -10,7 +10,7 @@ const GridProduct = ({ products, setProducts }) => {
   useEffect(() => {
     (async () => {
       const response = await axiosService.getAllProducts();
-      console.log(response);
+      // console.log(response);
       const prod = response.filter( elem => elem.category !== "electronics");
       setProducts(prod);
     })();

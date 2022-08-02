@@ -43,14 +43,14 @@ export default function SignInSide() {
   const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
-    // dongmail.com pass: ewedon
+    // dongmail.com pass:
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get("email");
     const password = data.get("password");
 
     const response = await axiosService.getUser();
-    console.log(response);
+    // console.log(response);
 
     if (email === response.email && password === response.password) {
       dispatch( login() );

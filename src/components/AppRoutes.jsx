@@ -6,7 +6,7 @@ import LogIn from "../pages/LogIn";
 import ProductDetails from "../pages/ProductDetails";
 import Products from "../pages/Products";
 import NavBar from "./NavBar";
-import { height } from "@mui/system";
+import Profile from "../pages/Profile";
 
 const AppRoutes = () => {
   return (
@@ -15,6 +15,7 @@ const AppRoutes = () => {
       <Routes>
         <Route index element={<LogIn />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/products/:productId" element={<ProductDetails />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/access-denied" element={<AccessDenied />} />
