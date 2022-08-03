@@ -17,6 +17,7 @@ import axiosService from "../services/axiosService";
 import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import { login } from "../store/slices/token/tokenSlice";
+import { getUser } from "../store/slices/user/thunk";
 
 function Copyright(props) {
   return (
@@ -54,6 +55,7 @@ export default function SignInSide() {
 
     if (email === response.email && password === response.password) {
       dispatch( login() );
+      dispatch( getUser() );
       navigate("/products");
     } else {
       Swal.fire({

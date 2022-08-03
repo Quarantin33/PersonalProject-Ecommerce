@@ -5,8 +5,8 @@ import "./AccessDenied.css";
 const AccessDenied = () => {
   return (
     <div id="notfound">
-      <div class="notfound">
-        <div class="notfound-bg">
+      <div className="notfound">
+        <div className="notfound-bg">
           <div></div>
           <div></div>
           <div></div>

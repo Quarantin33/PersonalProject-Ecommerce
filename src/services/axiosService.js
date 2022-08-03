@@ -1,29 +1,21 @@
-import axios from "axios";
-
-let baseUrl = process.env.REACT_APP_URL;
+import { axiosApi } from "./axiosApi";
 
 class AxiosService {
 
     async getAllProducts() {
-        const url = `${baseUrl}/products`;
-
-        const response = await axios.get(url);
+        const response = await axiosApi.get('/products');
 
         return response.data;
     }
 
     async getUser() {
-        const url = `${baseUrl}/users/4`;
-
-        const response = await axios.get(url);
+        const response = await axiosApi.get('/users/4');
 
         return response.data;
     }
 
     async getSingleProduct(idProduct) {
-        const url = `${baseUrl}/products/${idProduct}`;
-
-        const response = await axios.get(url);
+        const response = await axiosApi.get(`/products/${idProduct}`);
 
         return response.data;
     }
