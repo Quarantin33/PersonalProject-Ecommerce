@@ -11,11 +11,9 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../store/slices/token/tokenSlice";
-import { red } from "@mui/material/colors";
 import logoNav from "../static/img/logoNav.png";
 
 const style = {
@@ -36,6 +34,9 @@ const pages = [
     About us
   </Link>,
 ];
+
+const burguerMenu = ["LogIn", "Products", "About us"];
+
 const settings = ["Profile", "Cart", "Logout"];
 
 const NavBar = () => {
@@ -48,23 +49,60 @@ const NavBar = () => {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (e) => {
+    // console.log(e.target.textContent); Burguer menu
+    const content = e.target.textContent;
+
+    switch (content) {
+      case "LogIn":
+        navigate("/");
+        break;
+      case "Products":
+        navigate("/products");
+        break;
+      case "About us":
+        navigate("/about-us");
+        break;
+      default:
+        console.log("ERROR en handleCloseNavMenu");
+        break;
+    }
+
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (e) => {
+    // console.log(e.target.textContent)
+    const content = e.target.textContent;
+
+    switch (content) {
+      case "Profile":
+        navigate("/profile");
+        break;
+      case "Cart":
+        // navigate("/products");
+        break;
+      case "Logout":
+        dispatch(logout());
+        navigate("/");
+        break;
+      default:
+        console.log("ERROR en handleCloseUserMenu");
+        break;
+    }
     setAnchorElUser(null);
   };
 
-  const handleLogOut = () => {
-    //quitar permisos de login
-    dispatch(logout());
-    navigate("/");
-  };
+  // const handleLogOut = () => {
+  //   //quitar permisos de login
+  //   dispatch(logout());
+  //   navigate("/");
+  // };
 
   return (
     <AppBar position="fixed">
@@ -72,7 +110,7 @@ const NavBar = () => {
         <Toolbar
           disableGutters
           sx={{
-            margin: '-7px',
+            margin: "-7px",
             display: "flex",
             justifyContent: "space-around",
             alignContent: "center",
@@ -98,7 +136,6 @@ const NavBar = () => {
           >
             J&J
           </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -128,14 +165,13 @@ const NavBar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page, index) => (
+              {burguerMenu.map((menu, index) => (
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography textAlign="center">{menu}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Box
             sx={{
               justifyContent: "center",
@@ -178,7 +214,7 @@ const NavBar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center" onClick={handleLogOut}>
+                  <Typography textAlign="center">
                     {setting}
                   </Typography>
                 </MenuItem>

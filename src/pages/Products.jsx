@@ -7,7 +7,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const { token } = useSelector((state) => state.tokenBox);
 
-  console.log(token);
+  // console.log(token);
 
   return (
     <>
