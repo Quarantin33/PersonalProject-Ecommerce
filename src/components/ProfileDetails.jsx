@@ -3,6 +3,7 @@ import "./ProfileDetails.css";
 import { useSelector } from "react-redux";
 import TextFields from "./TextFields";
 import { Box, Grid } from "@mui/material";
+import AddressMap from "./AddressMap";
 
 const ProfileDetails = () => {
   const { user } = useSelector((state) => state.userBox);
@@ -38,6 +39,9 @@ const ProfileDetails = () => {
                 <TextFields key={index} data={values[index]} label={elem} />
               ))}
           </div>
+        </Grid>
+        <Grid item xs={6}>
+            <AddressMap />
         </Grid>
       </Grid>
     </Box>
