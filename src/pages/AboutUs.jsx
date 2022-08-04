@@ -3,6 +3,7 @@ import React from "react";
 import AboutGrid from "../components/AboutGrid";
 import AddressMap from "../components/AddressMap";
 import josiasImg from "../static/img/josiasImg.jpeg";
+import juanImg from "../static/img/juanImg.jpg";
 
 const AboutUs = () => {
   const josias = {
@@ -13,7 +14,7 @@ const AboutUs = () => {
 
   const juan = {
     name: 'Juan Ignacio Caballero',
-    img: null,
+    img: juanImg,
     description: "Agradecido de haber participado del módulo React de la AYI Academy."
   };
 
