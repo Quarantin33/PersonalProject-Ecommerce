@@ -1,20 +1,15 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux/es/exports';
-import { getUser } from '../store/slices/user/thunk';
+import { useSelector } from "react-redux/es/exports";
+import ProfileDetails from "../components/ProfileDetails";
+import AccessDenied from "../components/AccessDenied";
 
 const Profile = () => {
+  const { token } = useSelector((state) => state.tokenBox);
 
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-      dispatch( getUser() );
-    }, [dispatch])
-
-    console.log("Estoy en profile")
-    
   return (
-    <div>Profile</div>
-  )
-}
+    <>
+    {token ? <ProfileDetails /> : <AccessDenied />}
+    </>
+    );
+};
 
-export default Profile
+export default Profile;

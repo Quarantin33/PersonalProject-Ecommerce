@@ -17,6 +17,7 @@ import axiosService from "../services/axiosService";
 import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import { login } from "../store/slices/token/tokenSlice";
+import { getUser } from "../store/slices/user/thunk";
 
 function Copyright(props) {
   return (
@@ -54,6 +55,7 @@ export default function SignInSide() {
 
     if (email === response.email && password === response.password) {
       dispatch( login() );
+      dispatch( getUser() );
       navigate("/products");
     } else {
       Swal.fire({
@@ -65,7 +67,7 @@ export default function SignInSide() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} >
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
@@ -108,6 +110,7 @@ export default function SignInSide() {
               sx={{ mt: 1 }}
             >
               <TextField
+              color="secondary"
                 margin="normal"
                 required
                 fullWidth
@@ -118,6 +121,7 @@ export default function SignInSide() {
                 autoFocus
               />
               <TextField
+              color='secondary'
                 margin="normal"
                 required
                 fullWidth
@@ -128,25 +132,25 @@ export default function SignInSide() {
                 autoComplete="current-password"
               />
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
+                control={<Checkbox value="remember" color="secondary" />}
                 label="Remember me"
               />
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ bgcolor: '#c95405',mt: 3, mb: 2, '&:hover': {bgcolor: '#ffa94d'} }}
               >
                 Sign In
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
+                  <Link href="#" variant="body2" color='#fd7e14'>
                     Forgot password?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="#" variant="body2" color='#fd7e14'>
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>

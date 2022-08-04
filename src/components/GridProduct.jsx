@@ -17,10 +17,10 @@ const GridProduct = ({ products, setProducts }) => {
   }, [setProducts]);
 
   return (
-    <Box sx={{ width: "100%" , marginTop: '40px'}}>
+    <Box sx={{ width: "100%" , marginTop: '50px'}}>
       <Grid
         container
-        rowSpacing={1}
+        rowSpacing={3}
         columnSpacing={{ xs: 0.5, sm: 1, md: 2 }}
         sx={{ padding: 2 }}
       >

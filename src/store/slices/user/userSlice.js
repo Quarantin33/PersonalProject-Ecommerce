@@ -2,7 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     isLoading: false,
-    user: {}
+    user: {
+        id: null,
+        email: '',
+        username: '',
+        password: '',
+        name: {
+            firstname: '',
+            lastname: ''
+        },
+        phone: ''
+    }
 }
 
 export const userSlice = createSlice({
@@ -12,8 +22,10 @@ export const userSlice = createSlice({
         loadingUser: (state) => {
             state.isLoading = true;
         },
-        setUser: (state, action) => {
-            console.log(action);
+        setUser: (state, { payload }) => {
+            state.isLoading = false;
+            state.user = payload;
+            // console.log(payload);
         }
     }
 });

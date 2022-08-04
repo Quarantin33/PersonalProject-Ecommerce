@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/slices/token/tokenSlice";
 import logoNav from "../static/img/logoNav.png";
 
@@ -35,6 +35,7 @@ const pages = [
   </Link>,
 ];
 
+/* No dejaba poner dentro del menú Links components */
 const burguerMenu = ["LogIn", "Products", "About us"];
 
 const settings = ["Profile", "Cart", "Logout"];
@@ -42,6 +43,7 @@ const settings = ["Profile", "Cart", "Logout"];
 const NavBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.tokenBox);
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -105,7 +107,7 @@ const NavBar = () => {
   // };
 
   return (
-    <AppBar position="fixed">
+    <AppBar position="fixed" style={{backgroundColor: '#c95405'}}>
       <Container maxWidth="x1">
         <Toolbar
           disableGutters
@@ -193,7 +195,12 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                {token && (
+                  <Avatar
+                    alt="Remy Sharp"
+                    src="https://i.pinimg.com/originals/ec/68/59/ec6859cb8c8077cf5516e15dad2b522e.jpg"
+                  />
+                )}
               </IconButton>
             </Tooltip>
             <Menu
@@ -214,9 +221,7 @@ const NavBar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">
-                    {setting}
-                  </Typography>
+                  <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
             </Menu>
