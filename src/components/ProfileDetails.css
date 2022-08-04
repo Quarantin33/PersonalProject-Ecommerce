@@ -2,11 +2,15 @@ body {
   background-color: #ced4da;
 }
 
+.inputs {
+  margin-top: -20px;
+}
+
 .container {
   height: 76vh;
   width: 370px;
   margin: 120px auto 0px auto;
-  background-color: #f0f0f0;
+  background-color: #f1f3f5;
   padding: 0 20px 20px;
   border-radius: 6px;
   -webkit-border-radius: 6px;

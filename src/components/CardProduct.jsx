@@ -1,35 +1,33 @@
-import React, { useRef } from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useRef } from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Button, CardActionArea, CardActions } from "@mui/material";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const CardProduct = ({id, image, title, price}) => {
-
+const CardProduct = ({ id, image, title, price }) => {
   const btnRef = useRef();
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleClick = () => {
-    const sufixUrl = `${location.pathname}/${btnRef.current.id}`
+    const sufixUrl = `${location.pathname}/${btnRef.current.id}`;
     // products/id
     // console.log(sufixUrl);
 
     navigate(sufixUrl);
-  }
+  };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345,"&:hover": {
+      bgcolor: "#ffc078",
+      transition: "0.5s",
+      transform: "scale(1.05,1.05)",
+    } }}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="270"
-          image={image}
-          alt={title}
-        />
-        <CardContent sx={{height: 130}}>
+        <CardMedia component="img" height="270" image={image} alt={title} />
+        <CardContent sx={{ height: 130 }}>
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
@@ -39,12 +37,26 @@ const CardProduct = ({id, image, title, price}) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={handleClick} id={id} ref={btnRef}>
+        <Button
+          variant="contained"
+          size="small"
+          sx={{
+            backgroundColor: "#c95405",
+            "&:hover": {
+              bgcolor: "#fd7e14",
+              transition: "0.5s",
+              transform: "scale(1.05,1.2)",
+            },
+          }}
+          onClick={handleClick}
+          id={id}
+          ref={btnRef}
+        >
           VIEW DETAILS...
         </Button>
       </CardActions>
     </Card>
   );
-}
+};
 
 export default CardProduct;

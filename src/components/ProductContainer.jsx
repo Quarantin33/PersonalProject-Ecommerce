@@ -11,7 +11,7 @@ const ProductContainer = ({ id, image, title, price, description, category }) =>
             <h1>{title}</h1>
             <h3><b>Category: </b>{category}</h3>
             <div>{description}</div>
-            <p><b>Price: </b>${price}</p>
+            <p><b>Price: </b><span>${price}</span></p>
         </div>
     </div>
   )

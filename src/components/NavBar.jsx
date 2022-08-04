@@ -107,7 +107,7 @@ const NavBar = () => {
   // };
 
   return (
-    <AppBar position="fixed">
+    <AppBar position="fixed" style={{backgroundColor: '#c95405'}}>
       <Container maxWidth="x1">
         <Toolbar
           disableGutters
@@ -195,7 +195,6 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {/* Renderizado del logo setting condicionado */}
                 {token && (
                   <Avatar
                     alt="Remy Sharp"

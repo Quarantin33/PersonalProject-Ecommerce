@@ -1,9 +1,7 @@
 import React from "react";
 import "./ProfileDetails.css";
 import { useSelector } from "react-redux";
-import TextFields from "./TextFields";
-import { Box, Grid } from "@mui/material";
-import AddressMap from "./AddressMap";
+import { Box, Grid, TextField } from "@mui/material";
 
 const ProfileDetails = () => {
   const { user } = useSelector((state) => state.userBox);
@@ -13,7 +11,7 @@ const ProfileDetails = () => {
   const username = user.username;
   const phone = user.phone;
   const password = user.password;
-  
+
   let values = [fullName, email, username, phone, password];
 
   return (
@@ -24,7 +22,7 @@ const ProfileDetails = () => {
         columnSpacing={{ xs: 0.5, sm: 1, md: 2 }}
         sx={{ padding: 2 }}
       >
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <div className="container">
             <div className="avatar-flip">
               <img
@@ -34,14 +32,31 @@ const ProfileDetails = () => {
                 alt="img2"
               />
             </div>
-            {
-              inputs.map((elem, index) => (
-                <TextFields key={index} data={values[index]} label={elem} />
-              ))}
+            <div className="inputs">
+              {inputs.map((elem, index) =>
+                elem === "Password" ? (
+                  <TextField
+                    key={index}
+                    margin="dense"
+                    type="password"
+                    color="secondary"
+                    value={values[index]}
+                    label={elem}
+                  />
+                ) : (
+                  <TextField
+                    key={index}
+                    name="text"
+                    type="text"
+                    margin="dense"
+                    value={values[index]}
+                    color="secondary"
+                    label={elem}
+                  />
+                )
+              )}
+            </div>
           </div>
-        </Grid>
-        <Grid item xs={6}>
-            <AddressMap />
         </Grid>
       </Grid>
     </Box>

@@ -1,44 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
 
 .container-product {
-    height: 100vh;
-    min-height: 100%;
-    background: #ced4da ;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  height: 100vh;
+  min-height: 100%;
+  background: #ced4da;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .image-product {
-    max-height: 500px;
-    height: 300px;
-    justify-content: center;
+  border: 1.5px hidden #c95405;
+  border-radius: 13px;
+  max-height: 500px;
+  height: 300px;
+  justify-content: center;
 }
 
 .image-item {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    height: 600px;
-    box-sizing: border-box;
-    margin-right: 180px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  height: 600px;
+  box-sizing: border-box;
+  margin-right: 180px;
 }
+
+.image-product:hover {
+  box-shadow: 9px 9px 7px -1px #495057;
+  margin-top: 10px;
+  transform: scale(1.1);
+  transition: 0.7s;
+}
+
 .description-item {
-    font-family: 'Roboto Condensed', sans-serif;
-    width: 30%;
-    align-self: center;
+  font-family: "Roboto Condensed", sans-serif;
+  width: 30%;
+  align-self: center;
 }
 
 h3 {
-    color: #228be6;
+  color: #c95405;
 }
 
 p {
-    font-weight: 600;
-    font-size: larger;
-    color: #228be6;
+  font-weight: 600;
+  font-size: larger;
 }
 
 b {
-    color: #60676f;
+  color: #60676f;
+}
+p span {
+  color: #c95405;
 }

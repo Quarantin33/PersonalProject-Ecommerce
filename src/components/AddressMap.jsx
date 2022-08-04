@@ -3,14 +3,21 @@ import GoogleMaps from "simple-react-google-maps";
 
 const AddressMap = () => {
   const defaultProps = {
-    center: { lat: 29.564575, lng: -98.549488 },
-    zoom: 15,
+    center: {lat: -31.442152, lng: -64.182711},
+    zoom: 5,
+    markers:[
+      {lat: -32.890991, lng: -68.843512},
+      {lat: -31.442152, lng: -64.182711}
+      //-31.442152, -64.182711
+    ]
   };
 
   const style = {
     height: "76vh",
     width: "600px",
-    margin: "120px auto 0px auto"
+    margin: "120px auto 0px auto",
+    border: "1.5px hidden #c95405",
+    borderRadius: "13px"
   };
 
   return (
@@ -19,9 +26,7 @@ const AddressMap = () => {
       style={style}
       zoom={defaultProps.zoom}
       center={defaultProps.center}
-      markers={[
-        defaultProps.center
-      ]}
+      markers={defaultProps.markers}
     />
   );
 };
