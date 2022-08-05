@@ -63,7 +63,7 @@ const NavBar = () => {
 
     switch (content) {
       case "LogIn":
-        navigate("/final-excercise");
+        navigate("/final-excercise/");
         break;
       case "Products":
         navigate("/products");
