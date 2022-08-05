@@ -3,28 +3,49 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { Button, CardActionArea, CardActions, IconButton } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { getProduct } from "../store/slices/cart/thunk";
+import { useDispatch } from "react-redux";
 
 const CardProduct = ({ id, image, title, price }) => {
   const btnRef = useRef();
   const location = useLocation();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  let sufixUrl = '';
 
   const handleClick = () => {
-    const sufixUrl = `${location.pathname}/${btnRef.current.id}`;
+    // console.log()
+
+    location.pathname === '/products' ?
+    sufixUrl = `${location.pathname}/${btnRef.current.id}`:
+    sufixUrl = `/products/${btnRef.current.id}`;
     // products/id
     // console.log(sufixUrl);
 
     navigate(sufixUrl);
   };
 
+  const handleAddCart = () => {
+    const idProduct = btnRef.current.id;
+    console.log(btnRef.current.id)
+    dispatch( getProduct(idProduct) );
+
+  };
+
   return (
-    <Card sx={{ maxWidth: 345,"&:hover": {
-      bgcolor: "#ffc078",
-      transition: "0.5s",
-      transform: "scale(1.05,1.05)",
-    } }}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        "&:hover": {
+          bgcolor: "#ffc078",
+          transition: "0.5s",
+          transform: "scale(1.05,1.05)",
+        },
+      }}
+    >
       <CardActionArea>
         <CardMedia component="img" height="270" image={image} alt={title} />
         <CardContent sx={{ height: 130 }}>
@@ -54,6 +75,20 @@ const CardProduct = ({ id, image, title, price }) => {
         >
           VIEW DETAILS...
         </Button>
+        {
+          location.pathname === '/products' ? (<IconButton
+            size="large"
+            aria-label="add to shopping cart"
+            onClick={(e) => handleAddCart(e)}
+          >
+            <AddShoppingCartIcon
+            id={id}
+            ref={btnRef}
+            color="secondary"
+              sx={{ "&:hover": { transform: "scale(1.3)", transition: "0.5s" } }}
+            />
+          </IconButton>) : null
+        }
       </CardActions>
     </Card>
   );

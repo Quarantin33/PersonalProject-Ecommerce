@@ -15,6 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/slices/token/tokenSlice";
 import logoNav from "../static/img/logoNav.png";
+import './NavBar.css';
 
 const style = {
   fontSize: "1.2rem",
@@ -87,7 +88,7 @@ const NavBar = () => {
         navigate("/profile");
         break;
       case "Cart":
-        // navigate("/products");
+        navigate("/cart");
         break;
       case "Logout":
         dispatch(logout());
@@ -107,7 +108,7 @@ const NavBar = () => {
   // };
 
   return (
-    <AppBar position="fixed" style={{backgroundColor: '#c95405'}}>
+    <AppBar position="fixed" style={{ backgroundColor: "#c95405" }}>
       <Container maxWidth="x1">
         <Toolbar
           disableGutters
@@ -183,9 +184,15 @@ const NavBar = () => {
           >
             {pages.map((page, index) => (
               <Button
+              
                 key={index}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{
+                  my: 2,
+                  color: "white",
+                  display: "block",
+                  // "&:focus": { textDecoration: "underline" },
+                }}
               >
                 {page}
               </Button>
