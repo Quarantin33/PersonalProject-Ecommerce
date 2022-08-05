@@ -44,7 +44,7 @@ export default function SignInSide() {
   const dispatch = useDispatch();
 
   const handleSubmit = async (event) => {
-    // dongmail.com pass:
+    // dongmail.com pass: ewedon
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const email = data.get("email");

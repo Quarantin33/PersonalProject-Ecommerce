@@ -88,7 +88,7 @@ const NavBar = () => {
         navigate("/profile");
         break;
       case "Cart":
-        // navigate("/products");
+        navigate("/cart");
         break;
       case "Logout":
         dispatch(logout());

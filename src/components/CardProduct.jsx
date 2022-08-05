@@ -14,16 +14,21 @@ const CardProduct = ({ id, image, title, price }) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  let sufixUrl = '';
 
   const handleClick = () => {
-    const sufixUrl = `${location.pathname}/${btnRef.current.id}`;
+    // console.log()
+
+    location.pathname === '/products' ?
+    sufixUrl = `${location.pathname}/${btnRef.current.id}`:
+    sufixUrl = `/products/${btnRef.current.id}`;
     // products/id
     // console.log(sufixUrl);
 
     navigate(sufixUrl);
   };
 
-  const handleAddCart = (e) => {
+  const handleAddCart = () => {
     const idProduct = btnRef.current.id;
     console.log(btnRef.current.id)
     dispatch( getProduct(idProduct) );
@@ -70,18 +75,20 @@ const CardProduct = ({ id, image, title, price }) => {
         >
           VIEW DETAILS...
         </Button>
-        <IconButton
-          size="large"
-          aria-label="add to shopping cart"
-          onClick={(e) => handleAddCart(e)}
-        >
-          <AddShoppingCartIcon
-          id={id}
-          ref={btnRef}
-          color="secondary"
-            sx={{ "&:hover": { transform: "scale(1.3)", transition: "0.5s" } }}
-          />
-        </IconButton>
+        {
+          location.pathname === '/products' ? (<IconButton
+            size="large"
+            aria-label="add to shopping cart"
+            onClick={(e) => handleAddCart(e)}
+          >
+            <AddShoppingCartIcon
+            id={id}
+            ref={btnRef}
+            color="secondary"
+              sx={{ "&:hover": { transform: "scale(1.3)", transition: "0.5s" } }}
+            />
+          </IconButton>) : null
+        }
       </CardActions>
     </Card>
   );
