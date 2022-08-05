@@ -25,7 +25,7 @@ const style = {
 };
 
 const pages = [
-  <Link style={style} to="/">
+  <Link style={style} to="/final-excercise/">
     LogIn
   </Link>,
   <Link style={style} to="/products">
@@ -63,7 +63,7 @@ const NavBar = () => {
 
     switch (content) {
       case "LogIn":
-        navigate("/");
+        navigate("/final-excercise");
         break;
       case "Products":
         navigate("/products");
@@ -92,7 +92,7 @@ const NavBar = () => {
         break;
       case "Logout":
         dispatch(logout());
-        navigate("/");
+        navigate("/final-excercise/");
         break;
       default:
         console.log("ERROR en handleCloseUserMenu");
