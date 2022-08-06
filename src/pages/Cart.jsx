@@ -1,21 +1,15 @@
 import React from "react";
-import CardProduct from "../components/CardProduct";
 import { useSelector } from "react-redux";
 import AccessDenied from "../components/AccessDenied";
 import { Box, Grid } from "@mui/material";
+import GridProduct from "../components/GridProduct";
 
 const Cart = () => {
   const { token } = useSelector((state) => state.tokenBox);
-  const { product } = useSelector((state) => state.cartBox);
+  const { products } = useSelector((state) => state.cartBox);
 
-  const style = {
-    marginTop: '40px',
-    marginLeft: '35%'
-  };
-
-  console.log(token);
   return (
-    <Box sx={{ width: "100%", marginTop: "50px" }}>
+    <Box sx={{ width: "100%", marginLeft: '35px' }}>
       <Grid
         container
         rowSpacing={3}
@@ -23,14 +17,11 @@ const Cart = () => {
         sx={{ padding: 2 }}
       >
         <Grid item xs={12}>
-          <div style={style}>
-            {token !== undefined ? (
-              <CardProduct
-                id={product.id}
-                image={product.image}
-                title={product.title}
-                price={product.price}
-              />
+          <div>
+            {token ? (
+              products.length > 0 ? (
+                <GridProduct products={products}/>
+              ) : ("No hay productos en el carrito")
             ) : (
               <AccessDenied />
             )}

@@ -101,12 +101,6 @@ const NavBar = () => {
     setAnchorElUser(null);
   };
 
-  // const handleLogOut = () => {
-  //   //quitar permisos de login
-  //   dispatch(logout());
-  //   navigate("/");
-  // };
-
   return (
     <AppBar position="fixed" style={{ backgroundColor: "#c95405" }}>
       <Container maxWidth="x1">
@@ -191,7 +185,6 @@ const NavBar = () => {
                   my: 2,
                   color: "white",
                   display: "block",
-                  // "&:focus": { textDecoration: "underline" },
                 }}
               >
                 {page}

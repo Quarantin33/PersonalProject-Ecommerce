@@ -3,7 +3,12 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions, IconButton } from "@mui/material";
+import {
+  Button,
+  CardActionArea,
+  CardActions,
+  IconButton,
+} from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { getProduct } from "../store/slices/cart/thunk";
@@ -14,25 +19,19 @@ const CardProduct = ({ id, image, title, price }) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  let sufixUrl = '';
+  let sufixUrl = "";
 
   const handleClick = () => {
-    // console.log()
-
-    location.pathname === '/products' ?
-    sufixUrl = `${location.pathname}/${btnRef.current.id}`:
-    sufixUrl = `/products/${btnRef.current.id}`;
-    // products/id
-    // console.log(sufixUrl);
+    location.pathname === "/products"
+      ? (sufixUrl = `${location.pathname}/${btnRef.current.id}`)
+      : (sufixUrl = `/products/${btnRef.current.id}`);
 
     navigate(sufixUrl);
   };
 
   const handleAddCart = () => {
     const idProduct = btnRef.current.id;
-    console.log(btnRef.current.id)
-    dispatch( getProduct(idProduct) );
-
+    dispatch(getProduct(idProduct));
   };
 
   return (
@@ -75,20 +74,22 @@ const CardProduct = ({ id, image, title, price }) => {
         >
           VIEW DETAILS...
         </Button>
-        {
-          location.pathname === '/products' ? (<IconButton
+        {location.pathname === "/products" ? (
+          <IconButton
             size="large"
             aria-label="add to shopping cart"
             onClick={(e) => handleAddCart(e)}
           >
             <AddShoppingCartIcon
-            id={id}
-            ref={btnRef}
-            color="secondary"
-              sx={{ "&:hover": { transform: "scale(1.3)", transition: "0.5s" } }}
+              id={id}
+              ref={btnRef}
+              color="secondary"
+              sx={{
+                "&:hover": { transform: "scale(1.3)", transition: "0.5s" },
+              }}
             />
-          </IconButton>) : null
-        }
+          </IconButton>
+        ) : null}
       </CardActions>
     </Card>
   );
