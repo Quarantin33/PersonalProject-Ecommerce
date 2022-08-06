@@ -6,14 +6,9 @@ const AccessDenied = () => {
   return (
     <div id="notfound">
       <div className="notfound">
-        <div className="notfound-bg">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
         <h1>oops!</h1>
         <h2>Error 403 : Access Denied</h2>
-        <Link to="/">go login</Link>
+        <Link to="/final-excercise/">go login</Link>
       </div>
     </div>
   );
