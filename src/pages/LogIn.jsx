@@ -111,6 +111,7 @@ export default function SignInSide() {
             >
               <TextField
               color="secondary"
+                value="don@gmail.com"
                 margin="normal"
                 required
                 fullWidth
@@ -122,6 +123,7 @@ export default function SignInSide() {
               />
               <TextField
               color='secondary'
+                value="ewedon"
                 margin="normal"
                 required
                 fullWidth
